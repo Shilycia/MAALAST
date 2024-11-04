@@ -1,0 +1,7 @@
+{
+  "name": "maa-absensi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

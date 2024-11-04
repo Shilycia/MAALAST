@@ -1,0 +1,225 @@
+/* @font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans-VariableFont_opsz,wght.ttf")
+    format("ttf");
+  font-weight: 100 1000;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf")
+    format("ttf");
+  font-weight: 100 1000;
+  font-style: italic;
+} */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+html{
+  --ion-font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{ line-height: 1.25; }
+ion-card{
+  margin: 0;
+  border-radius: 8px;
+}
+ion-button::part(native){
+  padding-top: .57em;
+  padding-bottom: .57em;
+  font-weight: 600;
+  letter-spacing: 0;
+  min-height: 40px;
+}
+ion-button.btn-icon::part(native){
+  padding: .57em;
+}
+ion-header ion-toolbar{
+  min-height: 68px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flex-toolbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-bg{ position: relative; }
+.page-bg::before{
+  content: "";
+  position: absolute;
+  height: 18vh;
+  width: 100%;
+  background-color: var(--ion-color-primary);
+}
+.page-bg + main{ position: relative; }
+.header-ios ion-toolbar:last-of-type{ --border-width: 0; }
+.user-img::part(image){
+  border-radius: 50rem;
+}
+.photo-preview{
+  position: relative;
+}
+.photo-preview .pp-media img{  width: 100%;}
+.photo-preview .pp-action{
+  display: flex;
+  justify-content: center;
+}
+.photo-preview.no-photo .pp-action{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+ion-header .user-img::part(image){
+  width: 36px;
+  height: 36px;
+}
+.main-card{
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 16px;
+}
+.mc-header{
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+.button-outline{
+  --border-width: 1px;
+}
+.cs-badge{
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-style: 12px;
+  line-height: 1;
+}
+.cs-badge.csb-danger{
+  background-color: #FFDADC;
+  color: var(--ion-color-danger);
+}
+.cs-alert{
+  display: block;
+  border-radius: 8px;
+}
+.csa-content{
+  padding: 12px 16px;
+}
+.cs-alert.csa-info{
+  background-color: #E4FBFF;
+  border: 1px solid #2D8494;
+}
+.checklist-item ion-checkbox{
+  --checkbox-background-checked: var(--ion-color-success);
+  --border-color-checked: var(--ion-color-success);
+  --border-radius: 50rem;
+  --size: 24px;
+}
+.checklist-item ion-checkbox::part(container){ padding: 3px; }
+.checklist-item ion-label h3{ font-size: 16px;margin-bottom: 0; }
+.plan-list-wrapper{
+  max-height: 54vh;
+  overflow: auto;
+}
+.plan-list-wrapper ion-item-divider{
+  position: sticky;
+  top: 0;
+}
+.custom-alert-popup .alert-wrapper:not(.cap-wrapper){ display: none; }
+.custom-alert-popup .alert-wrapper.cap-wrapper{
+  --min-width: 320px;
+  --max-width: 320px;
+  opacity: 1;
+}
+/* Custom Utility Class */
+.shadow-0{ box-shadow: none; }
+.fw-500{ font-weight: 500; }
+.fw-semibold{ font-weight: 600; }
+.fw-bold{ font-weight: 700; }
+.ls-0{ letter-spacing: 0; }
+.flex{ display: flex; }
+.flex-col{ flex-direction: column; }
+.space-between, .justify-space-between{ justify-content: space-between; }
+.justify-flex-start{ justify-content: flex-start; }
+.justify-flex-end{ justify-content: flex-end; }
+.justify-center{ justify-content: center; }
+.items-center{ align-items: center; }
+.flex-fill{ flex: 1 1 auto; }
+.border, .border-top{ border-top: 1px solid #c7c7c7; }
+.border, .border-bottom{ border-bottom: 1px solid #c7c7c7; }
+.border, .border-left{ border-left: 1px solid #c7c7c7; }
+.border, .border-right{ border-right: 1px solid #c7c7c7; }
+.text-white{ color: white;}
+.rounded-0{ border-radius: 0; }
+.bg-white{
+  background-color: #fff;
+}
+.bg-light{
+  background-color: var(--ion-color-light);
+}
+
+.util-color[class*="ion-color-"]{
+  color: var(--ion-color-base);
+}
+
+.m-0, .mtop-0, .my-0{ margin-top: 0px; }
+.m-0, .mbottom-0, .my-0{ margin-bottom: 0px; }
+.m-0, .mleft-0, .mx-0{ margin-left: 0px; }
+.m-0, .mright-0, .mx-0{ margin-right: 0px; }
+
+.m-4, .mtop-4, .my-4{ margin-top: 4px; }
+.m-4, .mbottom-4, .my-4{ margin-bottom: 4px; }
+.m-4, .mleft-4, .mx-4{ margin-left: 4px; }
+.m-4, .mright-4, .mx-4{ margin-right: 4px; }
+
+.m-8, .mtop-8, .my-8{ margin-top: 8px; }
+.m-8, .mbottom-8, .my-8{ margin-bottom: 8px; }
+.m-8, .mleft-8, .mx-8{ margin-left: 8px; }
+.m-8, .mright-8, .mx-8{ margin-right: 8px; }
+
+.m-12, .mtop-12, .my-12{ margin-top: 12px; }
+.m-12, .mbottom-12, .my-12{ margin-bottom: 12px; }
+.m-12, .mleft-12, .mx-12{ margin-left: 12px; }
+.m-12, .mright-12, .mx-12{ margin-right: 12px; }
+
+.m-16, .mtop-16, .my-16{ margin-top: 16px; }
+.m-16, .mbottom-16, .my-16{ margin-bottom: 16px; }
+.m-16, .mleft-16, .mx-16{ margin-left: 16px; }
+.m-16, .mright-16, .mx-16{ margin-right: 16px; }
+
+.p-0, .ptop-0, .py-0{ padding-top: 0px; }
+.p-0, .pbottom-0, .py-0{ padding-bottom: 0px; }
+.p-0, .pleft-0, .px-0{ padding-left: 0px; }
+.p-0, .pright-0, .px-0{ padding-right: 0px; }
+
+.p-4, .ptop-4, .py-4{ padding-top: 4px; }
+.p-4, .pbottom-4, .py-4{ padding-bottom: 4px; }
+.p-4, .pleft-4, .px-4{ padding-left: 4px; }
+.p-4, .pright-4, .px-4{ padding-right: 4px; }
+
+.p-8, .ptop-8, .py-8{ padding-top: 8px; }
+.p-8, .pbottom-8, .py-8{ padding-bottom: 8px; }
+.p-8, .pleft-8, .px-8{ padding-left: 8px; }
+.p-8, .pright-8, .px-8{ padding-right: 8px; }
+
+.p-12, .ptop-12, .py-12{ padding-top: 12px; }
+.p-12, .pbottom-12, .py-12{ padding-bottom: 12px; }
+.p-12, .pleft-12, .px-12{ padding-left: 12px; }
+.p-12, .pright-12, .px-12{ padding-right: 12px; }
+
+.p-16, .ptop-16, .py-16{ padding-top: 16px; }
+.p-16, .pbottom-16, .py-16{ padding-bottom: 16px; }
+.p-16, .pleft-16, .px-16{ padding-left: 16px; }
+.p-16, .pright-16, .px-16{ padding-right: 16px; }
+
+.fs-11{ font-size: 11px; }
+.fs-12{ font-size: 12px; }
+.fs-13{ font-size: 13px; }
+.fs-14{ font-size: 14px; }
+.fs-16{ font-size: 16px; }
+.fs-18{ font-size: 18px; }
+.fs-20{ font-size: 20px; }
+.fs-24{ font-size: 24px; }
+.min-h-unset{ min-height: auto; }
