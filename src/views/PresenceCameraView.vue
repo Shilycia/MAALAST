@@ -7,11 +7,12 @@ import { onMounted } from 'vue';
 export default {
     components: { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonIcon, IonFooter, IonButtons, IonBackButton },
     setup() {
-        const { takePhoto } = usePhotoGallery();
-        return { takePhoto };
+        const { takePhoto, photos } = usePhotoGallery();
+        return { takePhoto, photos };
     },
     data() {
         return {
+            ada: false,
             error: '',
             officelat: -6.3380311,
             officelong: 106.7417130,
@@ -24,6 +25,10 @@ export default {
         };
     },
     methods: {
+        controlcamera(){
+          this.takePhoto();
+          this.ada = true
+        },
         checklokasi() {
             // Clear any existing location watch or interval to avoid duplicate
             if (this.locationWatchId) {
@@ -57,8 +62,6 @@ export default {
             // Check if within radius
             const radius = 0.01; // Radius in km
             this.status = this.jarak <= radius;
-
-            console.log("Calculated Distance (km):", this.jarak);
         },
 
         // Haversine formula to calculate distance in meters
@@ -76,7 +79,6 @@ export default {
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             const d = R * c; // Distance in kilometers
 
-            console.log("Haversine Calculation -> a:", a, "c:", c, "Distance (kilometers):", d);
             return d;
         }
     },
@@ -110,19 +112,23 @@ export default {
         <h4 class="mtop-0 mbottom-4 fw-bold util-color ion-color-primary">Ambil Swafoto</h4>
         <span class="fs-14">Ambil swafoto Anda. Swafoto akan digunakan sebagai bukti kehadiran Anda.</span>
       </div>
-      <div class="photo-preview no-photo" v-if="jarak">
-        <div class="pp-media">
-          <img src="/assets/images/photo-placeholder.svg" alt="">
-        </div>
+      <div class="photo-preview no-photo" v-if="true">
+          <div class="pp-media" >
+            <div v-for="(photo,index) in photos" :key="photo">
+              <div v-if="index < 1">
+                <img :src="photo.webViewPath">
+              </div>
+            </div>
+          </div>
         <div class="pp-action">
-          <ion-button @click="takePhoto">
+          <ion-button @click="controlcamera">
               <IconCamera />
               <span class="mleft-8">Ambil Swafoto</span>
           </ion-button>
         </div>
       </div>
-      <div v-else>
-        <ion-label>ANDA DI LUAR JANGKAUAN </ion-label>
+      <div v-else style="width: 100%; height: 200px; text-align: center; padding-top: 50px;">
+        <ion-label style="padding: 20px; background: crimson; border-radius: 4px; color: white; font-weight: bold;">ANDA DI LUAR JANGKAUAN </ion-label>
       </div>
       <div>
         <ion-label>{{ jarak }} km</ion-label>
