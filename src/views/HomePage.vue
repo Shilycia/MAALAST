@@ -27,10 +27,10 @@
           <div class="flex space-between text-white items-center mbottom-12">
             <div class="flex items-center">
               <IconCalendarEvent width="20" />
-              <span class="mleft-4">Rabu, 07 Sep 2024</span>
+              <span class="mleft-4">{{ date }}</span>
             </div>
             <div>
-              <span class="fw-semibold">08:12:33 WIB</span>
+              <span class="fw-semibold">{{ clock }}</span>
             </div>
           </div>
           <ion-card class="shadow-0">
@@ -38,21 +38,21 @@
               <ion-card-content class="ion-text-center flex-fill flex flex-col pright-0">
                 <div class="flex flex-col flex-fill justify-center pright-16">
                   <div>Datang</div>
-                  <div><strong class="util-color ion-color-success fs-18">08:10:17</strong></div>
-                  <div><span class="cs-badge csb-danger">Terlambat</span></div>
+                  <div><strong class="util-color ion-color-success fs-18">--:--:--</strong></div>
+                  <div v-if="false"><span class="cs-badge csb-danger">Terlambat</span></div>
                 </div>
               </ion-card-content>
               <ion-card-content class="ion-text-center flex-fill flex flex-col pleft-0">
                 <div class="border-left flex flex-col flex-fill justify-center pleft-16">
                   <div>Pulang</div>
-                  <div><strong class="util-color ion-color-success fs-18">08:10:17</strong></div>
+                  <div><strong class="util-color ion-color-success fs-18">--:--:--</strong></div>
                   <div></div>
                 </div>
               </ion-card-content>
             </div>
             <ion-card-content class="ion-text-center ion-no-padding flex items-center justify-center">
               <IconClock width="20" height="20"/>
-              <span class="fw-semibold mleft-4">08.00 ~ 17.30</span>
+              <span class="fw-semibold mleft-4"> --.-- ~ --.--</span>
             </ion-card-content>
             <IonCardContent class="flex p-8">
               <IonButton expand="block" class="flex-fill" router-link="/presensi/datang">
@@ -181,5 +181,30 @@ import {
   IonPopover,
 } from '@ionic/vue';
 import { IconArrowRight, IconBell, IconCalendarEvent, IconClock, IconDotsVertical, IconLogin2, IconLogout2 } from '@tabler/icons-vue';
+import { onMounted, ref } from 'vue';
 // import ExploreContainer from '@/components/ExploreContainer.vue';
+
+const clock = ref(null)
+const date = ref(null)
+
+function waktusekarang() {
+  
+  
+  const updateTime = () => {
+    const d = new Date();
+    const jam = String(d.getHours()).padStart(2, '0');
+    const menit = String(d.getMinutes()).padStart(2, '0');
+    const detik = String(d.getSeconds()).padStart(2, '0');
+    clock.value =  `${jam} : ${menit} : ${detik}`;
+  };
+
+  date.value = new Date().toDateString()
+  
+  updateTime(); 
+  setInterval(updateTime, 1000);
+}
+
+onMounted(()=>{
+  waktusekarang()
+})
 </script>
