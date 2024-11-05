@@ -4,12 +4,20 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonBut
 import { IconEdit, IconInfoCircle, IconPlus, IconTrash } from '@tabler/icons-vue';
 import { useIonRouter } from '@ionic/vue';
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 // const { takePhoto } = usePhotoGallery();
 
 // onMounted(() => takePhoto())
 
+const date = ref(null)
+function waktusekarang() {
+  date.value = new Date().toDateString()
+}
+
+onMounted(()=>{
+  waktusekarang()
+})
 const confirmPresence = ref(false)
 const confirmRemarks = ref(false)
 const ionRouter = useIonRouter();
@@ -208,7 +216,7 @@ const presenceConfirmed = () => {
             <IonInput label="Nama Proyek (Opsional)" label-placement="stacked" fill="outline" placeholder="Detail item pekerjaan" />
           </div>
           <div>
-            <IonInput label="Tanggal Pengerjaan" label-placement="stacked" fill="outline" placeholder="Detail item pekerjaan" disabled value="03 Nov 2024" />
+            <IonInput label="Tanggal Pengerjaan" label-placement="stacked" fill="outline" placeholder="Detail item pekerjaan" disabled :value="date" />
           </div>
         </div>
       </IonContent>

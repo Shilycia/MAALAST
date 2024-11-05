@@ -121,10 +121,12 @@ export default {
             </div>
           </div>
         <div class="pp-action">
-          <ion-button @click="controlcamera">
-              <IconCamera />
-              <span class="mleft-8">Ambil Swafoto</span>
-          </ion-button>
+          <div v-if="Object.keys(photos).length === 1">
+            <ion-button @click="controlcamera" >
+                <IconCamera />
+                <span class="mleft-8">Ambil Swafoto</span>
+            </ion-button>
+          </div>
         </div>
       </div>
       <div v-else style="width: 100%; height: 200px; text-align: center; padding-top: 50px;">
